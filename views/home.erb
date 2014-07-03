@@ -1,6 +1,13 @@
 <ul>
 <% @walls.each do |wall| %>
-  <li><%=wall.title%></li>
+  wall id: <%=wall.id%>
+  <li>
+  	<a href="/show_wall"><%=wall.title%></a>
+  </li>
+  <form method="GET" action="/show_wall">
+    <input type="number" style="display: none;" name="id" value="<%=wall.id%>" />
+    <button>Let's See description!</button>
+  </form>
 <% end %>
 </ul>
 

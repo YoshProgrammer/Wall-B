@@ -93,6 +93,10 @@ DataMapper.auto_upgrade!
 # `schema` (or "structure" or "shape") matches the `DataMapper::Resource`s
 # you've defined above.
 
+def show_params
+  p "params are #{params}"
+end
+
 get "/" do
   @walls = Wall.all
   # `all` is a method provided when we `include DataMapper::Resource`. It lets
@@ -132,4 +136,10 @@ post "/walls" do
     # If we *can't* create the wall; We'll redisplay the form so the user can
     # fix any errors.
   end
+end
+
+get "/show_wall" do
+  show_params
+  @wall = Wall.get(params[:id])
+  erb :show_wall
 end

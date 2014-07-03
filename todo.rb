@@ -17,10 +17,11 @@ DataMapper.finalize
 DataMapper.auto_upgrade!
 
 @post = Post.create(
-	:title => "My first Datamapper Todo List",
+	:title => "My first Todo List",
 	:body => "A lot of text...",
 	:created_at => Time.now
 )
 
-
+#====== Questions =====
+# Rather confused on how this whole thing works. I'm not very confident with the whole get, put, post, delete.
 
