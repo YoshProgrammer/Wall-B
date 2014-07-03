@@ -1,9 +1,7 @@
 <ul>
 <% @walls.each do |wall| %>
-  wall id: <%=wall.id%>
-  <li>
-  	<a href="/show_wall"><%=wall.title%></a>
-  </li>
+  Wall ID: <%=wall.id%> <br>
+  User Name: <%=wall.created_by%>
   <form method="GET" action="/show_wall">
     <input type="number" style="display: none;" name="id" value="<%=wall.id%>" />
     <button>Let's See description!</button>
