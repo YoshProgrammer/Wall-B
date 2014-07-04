@@ -1,12 +1,9 @@
 <ul>
-<% @walls.each do |wall| %>
-  Wall ID: <%=wall.id%> <br>
-  User Name: <%=wall.created_by%>
-  <form method="GET" action="/show_wall">
-    <input type="number" style="display: none;" name="id" value="<%=wall.id%>" />
-    <button>Click to see dezscriptionals</button>
-  </form>
-<% end %>
+  <% @walls.each do |wall| %>
+    Wall ID: <%= wall.id %> <br>
+    User Name: <%= wall.created_by %>
+    show <a href="/walls/<%= wall.id %>">descripzions</a>
+  <% end %>
 </ul>
 
 <a href="/walls/new">Add Your Own Wall, at your own risk of course</a>

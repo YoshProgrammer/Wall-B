@@ -94,10 +94,13 @@ DataMapper.auto_upgrade!
 # you've defined above.
 
 def show_params
-  p "params are #{params}"
+  puts "\n"
+  puts "\n"
+  p params
 end
 
 get "/" do
+  show_params
   @walls = Wall.all
   # `all` is a method provided when we `include DataMapper::Resource`. It lets
   # us retrieve every `Wall` record in our database!
@@ -108,6 +111,7 @@ get "/" do
 end
 
 get "/walls/new" do
+  show_params
   @wall = Wall.new
   # We're going to create a new wall, since `views/new_wall.erb` requires a
   # `@wall` instance variable to auto-fill in the form.
@@ -115,6 +119,7 @@ get "/walls/new" do
 end
 
 post "/walls" do
+  show_params
   wall_attributes = params["wall"]
   # We'll get the starting attributes for this wall from `params` that came in
   # from `views/new_wall.erb`
@@ -139,7 +144,20 @@ post "/walls" do
 end
 
 get "/show_wall" do
+   @wall = Wall.get(params[:id])
+  if @wall
+    erb :show_wall
+  else
+    redirect "/"
+  end
+end
+
+get("/walls/:id") do
   show_params
   @wall = Wall.get(params[:id])
-  erb :show_wall
+  if @wall
+    erb :show_wall
+  else
+    redirect "/"
+  end
 end
